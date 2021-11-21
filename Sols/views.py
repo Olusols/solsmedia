@@ -29,7 +29,7 @@ def index(request):
     service = Service.objects.filter(show=True)[:6]
     testimonial = Testimonial.objects.all()
     portfolio = PortFolio.objects.all()
-    team = TeamMember.objects.count()
+    team = TeamMember.objects.all().count()
 
     # experience
     time_now = datetime.datetime.now().year
