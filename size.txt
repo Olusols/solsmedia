@@ -1,0 +1,9 @@
+The size of the images that we need
+
+
+   <main id='main'>
+   
+        {% block content %}
+
+        {% endblock content %}
+    </main>

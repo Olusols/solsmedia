@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+ 
+
+
+{% block content %}
+
+
+     
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
+    <div class="hero-container" data-aos="fade-in">
+      <h1>Olusols</h1>
+      <p>I am a <span class="typed" data-typed-items="Designer, Developer, Machine Learning Enthusiast, Freelancer"></span></p>
+    </div>
+  </section><!-- End Hero -->
+
+
+
+    {% include 'index/about.html' %}
+
+    {% include 'index/facts.html' %}
+
+    {% include 'index/skills.html' %}
+
+    {% include 'index/resume.html' %}
+    
+    {% include 'index/portfolio.html' %}
+
+    {% include 'index/service.html' %}
+
+    {% include 'index/testimonial.html' %}
+
+    {% include 'index/contact.html' %}
+
+
+   
+
+
+ 
+
+{% endblock %}
+ {% for service in service %}
+    <img src={{ service.picture.url }}>
+    {{service.name}}
+ {% endfor %}
+{{ experience}}
+{{ age}}
+<b>
+Copyright {% now "Y" %}</b>
+
+
+<h1> This is the homepage</h1>
+
+{% for service in service %}
+   <a href={{service.get_absolute_url}}><h2>{{ service.name }}</h2></a>
+
+  <p> {{ service.detail }}</p>
+   <p>{{ service.iden }}</p>
+   <img style='width: 20%' src={{ service.picture.url }}>
+   <hr><hr>
+{% endfor %}
+
+<hr><hr><hr><hr>
+
+{% for service in testimonial %}
+   <a href={{service.get_absolute_url}}><h2>{{ service.client_name }}</h2></a>
+
+  <p> {{ service.review }}</p>
+   <p>{{ service.role }}</p>
+   <hr><hr>
+{% endfor %}
+
+project: {{project}}
+
+hour: {{hour}}

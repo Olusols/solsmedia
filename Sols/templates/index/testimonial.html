@@ -1,0 +1,40 @@
+  {% load static %}
+  
+    <!-- ======= Testimonials Section ======= -->
+    <section id="testimonials" class="testimonials section-bg">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Testimonials</h2>
+          <p></p>
+        </div>
+
+        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+          <div class="swiper-wrapper">
+          {% for testimonial in testimonial %}
+            <div class="swiper-slide">
+              <div class="testimonial-item" data-aos="fade-up">
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    {{ testimonial.review}}
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+                <img src={{testimonial.picture.url}} class="testimonial-img" alt="">
+                <a href={{testimonial.get_absolute_url}}><h3>{{testimonial.client_name}}</h3></a>
+                <h4>{{testimonial.role}}</h4>
+              </div>
+            </div><!-- End testimonial item -->
+            {% empty %}
+              <h3>No testimonials have been added</h3>
+           {% endfor %}
+          
+
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+    </section><!-- End Testimonials Section -->
+    
+
+

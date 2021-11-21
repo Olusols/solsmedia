@@ -1,0 +1,222 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          
+          {% if service.name %}
+             <h2>{{ service.name}} Detail</h2>
+          {% else %}
+             <h2>Service Details</h2>
+          {% endif %}
+          <ol>
+            <li><a href="{%url 'index' %}">Home</a></li>
+
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+    
+
+    <!-- ======= Portfolio Details Section ======= -->
+    <section id="portfolio-details" class="portfolio-details">
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-8">
+            <div class="portfolio-details-slider swiper">
+              <div class="swiper-wrapper align-items-center">
+
+                <div class="swiper-slide">
+                 
+                  <img src="{{service.picture.url}} " alt="">
+                </div>
+{% comment %}
+                <div class="swiper-slide">
+                  <!-- <img src="{{portfolio.pic2.url}} " alt="">  -->
+                  <img src="{{portfolio.pic2.url}}" alt="">
+                </div>
+
+                <div class="swiper-slide">
+
+                  <!-- <img src="{{portfolio.pic3.url}} " alt="">  -->
+                  <img src="assets/img/portfolio/portfolio-details-3.jpg" alt="">
+                </div>
+                <!-- {% if portfolio.pic4 %}
+                <div class="swiper-slide">
+
+                  <img src="{{portfolio.pic4.url}} " alt="">
+                </div> {% endif %}-->
+{% endcomment %}
+
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="portfolio-info">
+              <h3>Project information</h3>
+              <ul>
+                <!-- {{portfolio.category}}, {{portfolio.client_full_name}}, {{portfolio.project_date}}, {{portfolio.project_url}}  -->
+                <li><strong>Service</strong>: {{service.name}}</li>
+                
+                <li><strong>Service detail</strong>: {{service.detail}}</li>
+                
+              </ul>
+            </div>
+
+          </div>
+          <div class="portfolio-description">
+              
+              <h2></h2>
+              <p>
+               
+              </p>
+            </div>
+        </div>
+
+
+    <!-- End Portfolio Details Section -->
+
+
+
+    <!-- Portfolio in this category -->
+
+     <!-- ======= Portfolio Section ======= -->
+    <section id="portfolio" class="portfolio section-bg">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Related Portfolio</h2>
+          <p></p>
+        </div>
+
+          <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100">             
+   {% for serve in serve %}
+      {% if serve.category == service.iden %}
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="portfolio-wrap">
+              <img src={{serve.project_picture.url}} class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="{{serve.project_picture.url}}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="{{serve.client_full_name}}'s Project"><i class="bx bx-plus"></i></a>
+                <a href="{{serve.get_absolute_url}}" title="More Details"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+ {% endif %}
+    {% endfor %} 
+          </div>
+        </div>
+    </section>
+    <!-- End portfolio -->
+
+        
+           <!-- ======= Portfolio Section ======= -->
+    <section id="" class="portfolio section-bg">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Related Service</h2>
+          <p></p>
+        </div>
+        <div class="row">
+           {% for port in port %}
+               {% if port.pk != service.pk %}
+          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
+            <div class="icon">
+               <img src='{{.picture.url}}' alt='' class='icon'>
+            </div>
+            <h4 class="title"><a href="{{port.get_absolute_url}}" >{{port.name}}</a></h4>
+            <p class="description">{{port.detail}}</p>
+          </div>
+          {% endif %}
+          {% empty %}
+            <h3>No service available yet</h3>
+
+            
+          {% endfor %}
+        </div>
+
+       {% comment %}
+          <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100">
+                {% for port in port %}
+                   {% if port.pk != service.pk %}
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="portfolio-wrap">
+              <img src={{port.picture.url}} class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
+                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+                  {% endif %}
+               {% endfor %}
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <div class="portfolio-wrap">
+              <img src="assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
+                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="portfolio-wrap">
+              <img src="assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
+                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-scraping">
+            <div class="portfolio-wrap">
+              <img src="assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 2"><i class="bx bx-plus"></i></a>
+                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <div class="portfolio-wrap">
+              <img src="assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 2"><i class="bx bx-plus"></i></a>
+                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="portfolio-wrap">
+              <img src="assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"><i class="bx bx-plus"></i></a>
+                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+
+
+
+
+        </div>
+        {% endcomment %}
+         </div>
+    </section>
+    <!-- End portfolio -->
+ 
+
+{% endblock content %}
